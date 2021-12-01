@@ -18,14 +18,12 @@ count2= 0
 prev = None
 for x in range(len(content)-2):
     curr = content[x] + content[x+1] + content[x+2]
-    print(str(curr) + ' ' + str(prev))
     if prev is not None and curr > prev:
-        print('true')
         count2 += 1
 
     prev = curr
 
-print(count2)
+print('part 2', count2)
 
 
 
