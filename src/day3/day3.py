@@ -2,8 +2,6 @@ with open('day3Input.txt') as f:
     content = f.readlines()
 content = [x.strip() for x in content]
 
-mostList = []
-
 gamma = ''
 epsilon = ''
 
@@ -64,7 +62,4 @@ for x in range(len(content[0])):
         c02 = list(filter(lambda c0: c0[x] == '0', c02))
 
 print (int(oxygen[0], 2) * int(c02[0], 2))
-
-
-
 
