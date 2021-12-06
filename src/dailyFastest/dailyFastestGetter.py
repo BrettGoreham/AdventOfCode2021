@@ -49,10 +49,9 @@ with open('leaderboard.json', encoding='utf-8') as f:
     # a dictionary
     data = json.load(f)
 
-day = "1"
+day = "6"
 osloTz = pytz.timezone("Europe/Oslo")
-topXResults = 10
-
+topXResults = 7
 
 membersList = (list(data["members"].values()))
 
