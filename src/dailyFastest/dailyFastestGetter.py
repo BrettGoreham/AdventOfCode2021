@@ -49,13 +49,13 @@ with open('leaderboard.json', encoding='utf-8') as f:
     # a dictionary
     data = json.load(f)
 
-day = "6"
+day = "7"
 osloTz = pytz.timezone("Europe/Oslo")
-topXResults = 7
+topXResults = 12
 
 membersList = (list(data["members"].values()))
 
-print('Top ' + str(topXResults) + ' quickest stars for day ' + str(day) + ' star 1')
+print('Top ' + str(topXResults) + ' quickest star 1 for day ' + str(day))
 print()
 
 membersList.sort(key=sort_first_star)
@@ -65,8 +65,8 @@ for member in membersList[:topXResults]:
     print(member["name"].ljust(nameLen) + ' ' + datetime.fromtimestamp(ts, tz=osloTz).strftime('%H:%M:%S %d-%m-%Y'))
 
 
-print('\n')
-print('Top ' + str(topXResults) + ' quickest stars for day ' + str(day) + ' star 2')
+print()
+print('Top ' + str(topXResults) + ' quickest star 2 for day ' + str(day))
 print()
 membersList.sort(key=sort_second_star)
 nameLen = find_longest_name(membersList[:topXResults])
@@ -75,7 +75,7 @@ for member in membersList[:topXResults]:
     print(member["name"].ljust(nameLen) + ' ' + datetime.fromtimestamp(ts, tz=osloTz).strftime('%H:%M:%S %d-%m-%Y'))
 
 
-print('\n')
+print()
 print('Quickest time between star 1 and star 2 for day ' + str(day))
 print('')
 membersList.sort(key=sort_time_between_stars)
