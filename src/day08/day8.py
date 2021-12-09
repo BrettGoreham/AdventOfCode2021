@@ -61,16 +61,15 @@ with open('day8Input.txt') as f:
     content = f.readlines()
 content = [x.strip() for x in content]
 
-
 numberToSignalLength = {0: 6, 1: 2, 2: 5, 3: 5, 4: 4, 5: 5, 6: 6, 7: 3, 8: 7, 9: 6}
 
 part1Count = 0
 part2Total = 0
 for x in content:
     keys = get_key()
-    parts = x.split(' | ')
-    signals = parts[0].split(' ')
-    answer = parts[1].split(' ')
+    signals, answer = x.split(' | ')
+    signals = signals.split(' ')
+    answer = answer.split(' ')
     signals.sort(key=len)
     for signal in signals:
         signalLen = len(signal)
@@ -103,8 +102,8 @@ for x in content:
 
                 if found:
                     ans += str(key)
+                    break
 
-    print(ans)
     part2Total += int(ans)
 
 
