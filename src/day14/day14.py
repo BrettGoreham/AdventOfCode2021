@@ -18,7 +18,7 @@ def find_polymerization_after_iteration(_iterations, _rules, _line):
         val = pairs[_key]
         _letterCounter[_key[0]] = _letterCounter.get(_key[0], 0) + val
 
-    return max(_letterCounter.values()) - min(_letterCounter.values())  # I am unsure why this + 1 is required. but it is for both the example and input
+    return max(_letterCounter.values()) - min(_letterCounter.values())
 
 
 with open('day14Input.txt') as f:
