@@ -2,7 +2,7 @@ with open('day13Input.txt') as f:
     content = f.readlines()
 content = [x.strip() for x in content]
 
-
+charToPrint = '█'
 points = []
 count = 0
 highestX = 0
@@ -20,12 +20,11 @@ grid = []
 for y in range(highestY + 1):
     gridRow = []
     for x in range(highestX + 1):
-        if (y, x) in points:
-            gridRow.append('#')
-        else:
-            gridRow.append('.')
+        gridRow.append('.')
     grid.append(gridRow)
 
+for point in points:
+    grid[point[0]][point[1]] = charToPrint
 
 firstFold = content[count + 1]
 
@@ -35,8 +34,8 @@ if axis == 'y':
     foldCount = 1
     while foldCount + index < len(grid):
         for x in range(len(grid[0])):
-            if grid[foldCount + index][x] == '#':
-                grid[index - foldCount][x] = '#'
+            if grid[foldCount + index][x] == charToPrint:
+                grid[index - foldCount][x] = charToPrint
         foldCount += 1
 
     grid = grid[:index]
@@ -45,8 +44,8 @@ if axis == 'x':
     foldCount = 1
     while foldCount + index < len(grid[0]):
         for y in range(len(grid)):
-            if grid[y][foldCount + index] == '#':
-                grid[y][index - foldCount] = '#'
+            if grid[y][foldCount + index] == charToPrint:
+                grid[y][index - foldCount] = charToPrint
         foldCount += 1
 
     for i in range(len(grid)):
@@ -55,7 +54,7 @@ if axis == 'x':
 p1Count = 0
 for row in grid:
     for index in row:
-        if index == '#':
+        if index == charToPrint:
             p1Count += 1
 
 print('part 1', p1Count)
@@ -69,8 +68,8 @@ while count < len(content):
         foldCount = 1
         while foldCount + index < len(grid):
             for x in range(len(grid[0])):
-                if grid[foldCount + index][x] == '#':
-                    grid[index - foldCount][x] = '#'
+                if grid[foldCount + index][x] == charToPrint:
+                    grid[index - foldCount][x] = charToPrint
             foldCount += 1
 
         grid = grid[:index]
@@ -79,8 +78,8 @@ while count < len(content):
         foldCount = 1
         while foldCount + index < len(grid[0]):
             for y in range(len(grid)):
-                if grid[y][foldCount + index] == '#':
-                    grid[y][index - foldCount] = '#'
+                if grid[y][foldCount + index] == charToPrint:
+                    grid[y][index - foldCount] = charToPrint
             foldCount += 1
 
         for i in range(len(grid)):
@@ -90,4 +89,11 @@ while count < len(content):
 
 print('part 2 you must find capital letters by sight')
 for row in grid:
-    print(row)
+    line = ""
+    for x in row:
+        if x == '.':
+            line += ' '
+        else:
+            line += x
+
+    print(line)
