@@ -1,4 +1,3 @@
-
 def find_polymerization_after_iteration(_iterations, _rules, _line):
     pairs = {}
     for x in range(1, len(_line)):
