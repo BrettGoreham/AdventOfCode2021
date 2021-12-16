@@ -1,6 +1,5 @@
 import math
 import time
-import bisect
 from datetime import timedelta
 
 with open('day15Input.txt') as f:
@@ -61,7 +60,6 @@ def find_fastest_path(_map, _goal):
                             # sorted inserting to ensure that the next path to check is the lowest value.
                             paths = sorted_insert(paths, [new_point, new_point_value])
                             lowest_to_point[new_point] = new_point_value
-
 
 
     return lowest_to_point[(len(_map)-1, len(_map[0])-1)]
