@@ -36,6 +36,7 @@ for letter in content[0]:
     bits += hexToBits[letter]
 
 versionTotal = 0
+produced = 0
 
 # used to keep track of the current parent that the packet is a child of.
 remainingLengthOfPacket = float('inf')
@@ -91,14 +92,14 @@ while index < len(bits) and '1' in bits[index:]:
 
     while (parentLengthType == 0 and remainingLengthOfPacket == 0) or \
             (parentLengthType == 1 and remainingLengthOfPacket == len(subNumbers)):
-        val = int(get_val(packetType, subNumbers))
+        val = get_val(packetType, subNumbers)
 
         if 0 == len(parentPacketStack):
-            print('answer = ', val)
+            produced = val
             subNumbers = []
         else:
             packetType, parentLengthType, remainingLengthOfPacket, subNumbers = parentPacketStack.pop(len(parentPacketStack) - 1)
             subNumbers.append(val)
 
 print('part1', versionTotal)
-print(index)
+print('part2', produced)
