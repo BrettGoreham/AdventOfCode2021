@@ -2,26 +2,23 @@ import numpy
 
 
 def get_val(_operand, _sub_numbers):
-    _val = -1
     if _operand == 0:
-        _val = sum(_sub_numbers)
+        return sum(_sub_numbers)
     elif _operand == 1:
         if len(_sub_numbers) == 1:
-            _val = _sub_numbers[0]
+            return _sub_numbers[0]
         else:
-            _val = numpy.prod(_sub_numbers)
+            return numpy.prod(_sub_numbers)
     elif _operand == 2:
-        _val = min(_sub_numbers)
+        return min(_sub_numbers)
     elif _operand == 3:
-        _val = max(_sub_numbers)
+        return max(_sub_numbers)
     elif _operand == 5:
-        _val = int(_sub_numbers[0] > _sub_numbers[1])
+        return int(_sub_numbers[0] > _sub_numbers[1])
     elif _operand == 6:
-        _val = int(_sub_numbers[0] < _sub_numbers[1])
+        return int(_sub_numbers[0] < _sub_numbers[1])
     elif _operand == 7:
-        _val = int(_sub_numbers[0] == _sub_numbers[1])
-
-    return _val
+        return int(_sub_numbers[0] == _sub_numbers[1])
 
 
 with open('day16Input.txt') as f:
@@ -92,6 +89,7 @@ while index < len(bits) and '1' in bits[index:]:
 
     while (parentLengthType == 0 and remainingLengthOfPacket == 0) or \
             (parentLengthType == 1 and remainingLengthOfPacket == len(subNumbers)):
+
         val = get_val(packetType, subNumbers)
 
         if 0 == len(parentPacketStack):
